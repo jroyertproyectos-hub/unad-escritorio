@@ -15,8 +15,7 @@ class UnadPlannerApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(
-          seedColor: const Color(0xM3676ea5), // Blue-600
-          background: const Color(0xFFF1F4F8),
+          seedColor: const Color(0xFF2563EB), // Blue-600
         ),
         textTheme: GoogleFonts.interTextTheme(Theme.of(context).textTheme),
         useMaterial3: true,
@@ -72,9 +71,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
               _buildSidebarItem(Icons.dashboard, 'Dashboard', true, context),
               _buildSidebarItem(Icons.book, 'Cursos', false, context),
               _buildSidebarItem(Icons.assignment, 'Tareas', false, context),
-              Spacer(),
-              _buildSidebarItem(Icons.settings, 'Configuración', false, context),
-              _buildSidebarItem(Icons.logout, 'Cerrar Sesión', false, context),
+              const Spacer(),
+              _buildSidebarItem(Icons.settings, 'ConfiguraciÃ³n', false, context),
+              _buildSidebarItem(Icons.logout, 'Cerrar SesiÃ³n', false, context),
               const SizedBox(height: 24),
             ],
           ),
@@ -95,13 +94,13 @@ class _DashboardScreenState extends State<DashboardScreen> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          'Bienvenido de vuelta! ??',
+                          'Bienvenido de vuelta! ðŸ‘¢',
                           style: Theme.of(context).textTheme.headlineSmall?.copyWith(
                             fontWeight: FontWeight.wbold,
                           ),
                         ),
                         Text(
-                          'Aquí está el resumen de tus cursos y tareas.',
+                          'AquÃ­ estÃ¡ el resumen de tus cursos y tareas.',
                           style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                             color: Colors.grey[600],
                           ),
@@ -113,7 +112,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                         ScaffoldMessenger.of(context).clearSnackBars();
                         ScaffoldMessenger.of(context).showSnackBar(
                           const SnackBar(
-                            content: Text('Esto hará el scraping directamente desde tu PC...'),
+                            content: Text('Esto harÃ¡ el scraping directamente desde tu PC...'),
                           )
                         );
                       },
