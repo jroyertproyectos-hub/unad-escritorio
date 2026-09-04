@@ -8,6 +8,9 @@ on:
 jobs:
   build:
     runs-on: windows-latest
+    defaults:
+      run:
+        shell: bash
 
     steps:
       - uses: actions/checkout@v4
@@ -19,9 +22,10 @@ jobs:
           
       - name: Generate Windows Runner
         run: |
-          flutter create --platforms windows --org com.unad.planner temp
-          Move-Item temp/windows ./windows
-          Remove-Item temp -Recurse -Force
+          mv lib/main.dart lib/main_backup.dart
+          flutter create --platforms windows --org com.unad.planner --project-name unad_planner .
+          rm lib/main.dart
+          mv lib/main_backup.dart lib/main.dart
 
       - name: Get dependencies
         run: flutter pub get
