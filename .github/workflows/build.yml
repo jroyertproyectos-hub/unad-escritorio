@@ -1,0 +1,36 @@
+name: Build Windows App
+
+on:
+  push:
+    branches: [ "main", "master" ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+          
+      - name: Generate Windows Runner
+        run: |
+          flutter create --platforms windows --org com.unad.planner temp
+          Move-Item temp/windows ./windows
+          Remove-Item temp -Recurse -Force
+
+      - name: Get dependencies
+        run: flutter pub get
+
+      - name: Build Windows
+        run: flutter build windows --release
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: UnadPlanner-Windows
+          path: build/windows/x64/runner/Release/
